@@ -3,7 +3,7 @@ var messages = [], //array that hold the record of each string in chat
   lastUserMessage = "", //keeps track of the most recent input string from the user
   botMessage = "", //var keeps track of what the chatbot is going to say
   botName = 'NizzBot', //name of the chatbot
-  talking = true; //when false the speach function doesn't work
+  talking = false; //when false the speach function doesn't work
 //
 //****************************************************************
 
@@ -12,7 +12,9 @@ var messages = [], //array that hold the record of each string in chat
 function chatbotResponse() {
   talking = true;
   botMessage = "I'm confused"; //the default message
-
+  if (lastUserMessage === 'Keywords'){
+    botMessage = "Help, save";
+  }
   if (lastUserMessage === 'Hi' || lastUserMessage =='Hello') {
     botMessage = ['Hello, how can i help?']
   }
@@ -21,6 +23,13 @@ function chatbotResponse() {
     botMessage = 'My name is ' + botName + ', how can i help you?';
   }
 
+  if (lastUserMessage === 'location'){
+     botMessage = 'Open your GPS and type location again.';
+  }
+
+  if (lastUserMessage === "Save me"){
+    botMessage = "Alerting the nearest Police station"
+  }
   console.log(lastUserMessage);
   
 }
@@ -57,9 +66,9 @@ function newEntry() {
 //text to Speech
 //https://developers.google.com/web/updates/2014/01/Web-apps-that-talk-Introduction-to-the-Speech-Synthesis-API
 function Speech(say) {
-  if ('speechSynthesis' in window && talking) {
-    var utterance = new SpeechSynthesisUtterance(say);
-    speechSynthesis.speak(utterance);
+  if (talking) {
+    // var utterance = new SpeechSynthesisUtterance(say);
+    // speechSynthesis.speak(utterance);
   }
 }
 
