@@ -1,5 +1,5 @@
 
-let messages = [], //array that hold the record of each string in chat
+var messages = [], //array that hold the record of each string in chat
   lastUserMessage = "", //keeps track of the most recent input string from the user
   botMessage = "", //var keeps track of what the chatbot is going to say
   botName = 'Chatbot', //name of the chatbot
@@ -21,6 +21,9 @@ function chatbotResponse() {
   if (lastUserMessage === 'name') {
     botMessage = 'My name is ' + botName;
   }
+
+  console.log(lastUserMessage);
+  
 }
 
 //
@@ -45,7 +48,7 @@ function newEntry() {
     // says the message using the text to speech function written below
     Speech(botMessage);
     //outputs the last few array elements of messages to html
-    for (let i = 1; i < 8; i++) {
+    for (var i = 1; i < 8; i++) {
       if (messages[messages.length - i])
         document.getElementById("chatlog" + i).innerHTML = messages[messages.length - i];
     }
@@ -63,7 +66,7 @@ function Speech(say) {
 
 //runs the keypress() function when a key is pressed
 document.onkeypress = keyPress;
-//if the key enter is pressed then the code will run the function newEntry()
+//if the key pressed is 'enter' runs the function newEntry()
 function keyPress(e) {
   let x = e || window.event;
   let key = (x.keyCode || x.which);
