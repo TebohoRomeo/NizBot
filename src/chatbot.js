@@ -2,7 +2,7 @@
 var messages = [], //array that hold the record of each string in chat
   lastUserMessage = "", //keeps track of the most recent input string from the user
   botMessage = "", //var keeps track of what the chatbot is going to say
-  botName = 'Chatbot', //name of the chatbot
+  botName = 'NizzBot', //name of the chatbot
   talking = true; //when false the speach function doesn't work
 //
 //****************************************************************
@@ -13,13 +13,12 @@ function chatbotResponse() {
   talking = true;
   botMessage = "I'm confused"; //the default message
 
-  if (lastUserMessage === 'hi' || lastUserMessage =='hello') {
-    const hi = ['hi','howdy','hello']
-    botMessage = hi[Math.floor(Math.random()*(hi.length))];;
+  if (lastUserMessage === 'Hi' || lastUserMessage =='Hello') {
+    botMessage = ['Hello, how can i help?']
   }
 
-  if (lastUserMessage === 'name') {
-    botMessage = 'My name is ' + botName;
+  if (lastUserMessage === 'What is your name') {
+    botMessage = 'My name is ' + botName + ', how can i help you?';
   }
 
   console.log(lastUserMessage);
