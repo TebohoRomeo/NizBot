@@ -67,8 +67,8 @@ function newEntry() {
 //https://developers.google.com/web/updates/2014/01/Web-apps-that-talk-Introduction-to-the-Speech-Synthesis-API
 function Speech(say) {
   if (talking) {
-    // var utterance = new SpeechSynthesisUtterance(say);
-    // speechSynthesis.speak(utterance);
+    var utterance = new SpeechSynthesisUtterance(say);
+    speechSynthesis.speak(utterance);
   }
 }
 
